@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { SendIcon } from "lucide-react"
 import { useChat } from "@ai-sdk/react"
 import type { Portfolio } from "@/types/portfolio"
-
+import Markdown from "react-markdown"
 interface PortfolioAIChatProps {
   portfolio: Portfolio
 }
@@ -61,7 +61,9 @@ export default function PortfolioAIChat({ portfolio }: PortfolioAIChatProps) {
                     : 'bg-muted'
                     }`}
                 >
-                  {message.content}
+                  <Markdown>
+                    {message.content}
+                  </Markdown>
                 </div>
               </div>
             )
