@@ -38,16 +38,16 @@ export default function Step3() {
       const result = await savePortfolio(completeData)
 
       if (result.success) {
-        toast("Portfolio guardado exitosamente")
+        toast.success("Portfolio guardado exitosamente")
         router.push("/dashboard")
         setTimeout(() => {
           setStep(1)
         }, 1000)
       } else {
-        toast("Error al guardar el portfolio")
+        toast.error("Error al guardar el portfolio")
       }
     } catch (error) {
-      toast("Error al guardar el portfolio")
+      toast.error("Error al guardar el portfolio")
       console.error(error)
     }
   }
@@ -60,7 +60,7 @@ export default function Step3() {
             <h2 className="text-xl font-semibold">Experiencia Laboral</h2>
             <Button
               type="button"
-              variant="outline"
+              variant="default"
               onClick={() => experienceItems.append({
                 empresa: "",
                 cargo: "",

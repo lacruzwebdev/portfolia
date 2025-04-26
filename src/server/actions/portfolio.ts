@@ -10,7 +10,6 @@ import { createStreamableValue } from 'ai/rsc';
 import { createOpenRouter } from "@openrouter/ai-sdk-provider"
 import { env } from "@/env"
 
-
 export async function savePortfolio(data: Portfolio) {
   const { userId } = await auth()
   if (!userId) {
@@ -18,6 +17,7 @@ export async function savePortfolio(data: Portfolio) {
   }
 
   const client = await clerkClient()
+  const onboardingComplete = await client.users.getUser(userId).then(user => user.publicMetadata.onboardingComplete)
 
   try {
     // Verificar si ya existe un portfolio para este usuario
@@ -43,14 +43,15 @@ export async function savePortfolio(data: Portfolio) {
         userId,
         ...data,
       })
-      // Onboarding Complete
+    }
+    if (!onboardingComplete) {
       await client.users.updateUserMetadata(userId, {
         publicMetadata: {
           onboardingComplete: true,
         },
       })
     }
-    console.log("Portfolio guardado exitosamente")
+
     return { success: true }
   } catch (error) {
     console.error("Error al guardar el portfolio:", error)

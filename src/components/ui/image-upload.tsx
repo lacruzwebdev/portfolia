@@ -27,6 +27,11 @@ export function ImageUpload({ value, onChange, onRemove }: ImageUploadProps) {
     }
   }, [onChange])
 
+  const handleRemove = () => {
+    onRemove()
+    setPreview(null)
+  }
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { 'image/*': ['.png', '.jpg', '.jpeg'] },
@@ -40,8 +45,8 @@ export function ImageUpload({ value, onChange, onRemove }: ImageUploadProps) {
   return (
     <div className="space-y-4">
       {preview ? (
-        <div className="relative">
-          <Image
+        <>
+          <img
             src={preview}
             alt="Preview"
             className="w-32 h-32 rounded-full object-cover"
@@ -50,12 +55,12 @@ export function ImageUpload({ value, onChange, onRemove }: ImageUploadProps) {
             type="button"
             variant="destructive"
             size="icon"
-            className="absolute -top-2 -right-2 rounded-full"
-            onClick={onRemove}
+            className="absolute -top-2 -right-2 rounded-full cursor-pointer"
+            onClick={() => handleRemove()}
           >
             <X className="h-4 w-4" />
           </Button>
-        </div>
+        </>
       ) : (
         <div
           {...getRootProps()}
@@ -70,7 +75,8 @@ export function ImageUpload({ value, onChange, onRemove }: ImageUploadProps) {
             </p>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   )
 }

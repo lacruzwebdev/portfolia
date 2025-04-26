@@ -42,7 +42,7 @@ export default function Step2() {
             <h2 className="text-xl font-semibold">Educación</h2>
             <Button
               type="button"
-              variant="outline"
+              variant="default"
               onClick={() => educationItems.append({
                 institucion: "",
                 titulo: "",

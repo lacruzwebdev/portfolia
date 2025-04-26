@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Code, Palette, Bot, FileText } from 'lucide-react'
 import { Nav } from '@/components/landing/nav'
+import { SignInButton } from '@clerk/nextjs'
 
 export default function LandingPage() {
   return (
@@ -15,15 +16,18 @@ export default function LandingPage() {
             <span className="text-primary">en Minutos</span>
           </h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-            Crea un portfolio profesional impresionante con nuestra plataforma intuitiva.
+            Crea un portfolio profesional impresionante en un par de clicks.
             Destaca tu experiencia, habilidades y logros de manera elegante.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild size="lg">
-              <Link href="/auth/login">
-                Comenzar Ahora <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <SignInButton>
+
+              <Button asChild size="lg">
+                <Link href="/dashboard">
+                  Comenzar Ahora <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </SignInButton>
           </div>
         </div>
       </section>
@@ -75,17 +79,17 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-24">
-        <div className="relative rounded-3xl bg-gradient-to-r from-primary to-primary-foreground overflow-hidden">
+        <div className="relative rounded-3xl bg-primary overflow-hidden">
           <div className="relative z-10 flex flex-col items-center text-center px-4 py-16 text-primary-foreground">
             <h2 className="text-3xl font-bold mb-6">
               ¿Listo para Destacar?
             </h2>
             <p className="max-w-2xl mb-8 text-primary-foreground/90">
-              Únete a miles de profesionales que ya han creado su portfolio con nuestra plataforma.
+              Únete a todos los profesionales que ya han creado su portfolio con nuestra plataforma.
               Es gratis para empezar.
             </p>
             <Button size="lg" variant="secondary" asChild>
-              <Link href="/auth/login">
+              <Link href="/dashboard">
                 Crear Mi Portfolio <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

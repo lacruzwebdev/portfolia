@@ -10,7 +10,7 @@ interface ProfileProps {
 
 export default function Profile({ name, lastName, title, image }: ProfileProps) {
   return (
-    <Card className="border-none shadow-lg">
+    <Card className="border-none shadow-lg w-full">
       <CardContent className="p-6">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <Avatar className="h-24 w-24 md:h-32 md:w-32">

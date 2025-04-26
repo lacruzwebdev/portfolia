@@ -52,7 +52,7 @@ export default function Step1() {
             control={form.control}
             name="imagenPerfil"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="justify-center relative">
                 <FormLabel>Imagen de Perfil</FormLabel>
                 <FormControl>
                   <ImageUpload

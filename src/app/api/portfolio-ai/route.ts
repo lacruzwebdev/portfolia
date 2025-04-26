@@ -8,7 +8,6 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const body = await req.json() as { messages: Message[] };
   const { messages } = body;
-  console.log(messages)
 
   const openrouter = createOpenRouter({
     apiKey: env.OPENROUTER_API_KEY

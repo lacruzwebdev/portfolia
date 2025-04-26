@@ -22,7 +22,7 @@ export default function CopyToClipboardButton({ content }: CopyToClipboardButton
   return (
     <Button
       variant="outline"
-      className="w-1/2"
+      className="w-1/2 cursor-pointer"
       onClick={copyToClipboard}
     >
       <CopyIcon className="mr-2 h-4 w-4" />

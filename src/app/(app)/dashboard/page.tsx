@@ -6,6 +6,7 @@ import PortfolioAIChat from "@/components/portfolio/PortfolioAIChat";
 import CopyToClipboardButton from "@/components/copy-to-clipboard";
 import { auth } from "@clerk/nextjs/server";
 import { getPortfolio } from "@/lib/data";
+import { DownloadPDFButton } from "@/components/portfolio/DownloadPDFButton";
 
 export default async function DashboardPage() {
   const { userId } = await auth()
@@ -26,12 +27,15 @@ export default async function DashboardPage() {
             <div className="flex items-center gap-2">
               <CopyToClipboardButton content={portfolioUrl} />
               <Link href={portfolioUrl} target="_blank" className="w-1/2">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full cursor-pointer">
                   <ExternalLinkIcon className="h-4 w-4" />
                   Visitar Enlace
                 </Button>
               </Link>
             </div>
+            {portfolio &&
+              <DownloadPDFButton className="w-full cursor-pointer" portfolio={portfolio} />
+            }
           </CardContent>
         </Card>
 
@@ -42,7 +46,7 @@ export default async function DashboardPage() {
           </CardHeader>
           <CardContent>
             <Link href="/dashboard/edit">
-              <Button className="w-full">
+              <Button className="w-full cursor-pointer">
                 <PencilIcon className="mr-2 h-4 w-4" />
                 Editar
               </Button>
